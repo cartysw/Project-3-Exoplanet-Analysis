@@ -1,0 +1,5 @@
+# config file
+config.py
+
+# jupyter notebook checkpoints
+.ipynb_checkpoints/

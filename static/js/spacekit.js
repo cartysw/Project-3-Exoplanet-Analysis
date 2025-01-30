@@ -1,4 +1,4 @@
-// script.js
+// spacekit.js
 
 // Initialize SpaceKit
 const viz = new Spacekit.Simulation(document.getElementById('main-container'), {

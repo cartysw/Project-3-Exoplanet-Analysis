@@ -1,0 +1,65 @@
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: white;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #1f1f1f;
+}
+
+/* Sections */
+section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Section Titles */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+/* Visualization Containers */
+#scatter3d-container, 
+#scatter2d-container, 
+#main-container {
+    width: 100%;
+    height: 500px;
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dropdown Controls */
+#controls {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    section {
+        width: 95%;
+    }
+}

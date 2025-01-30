@@ -3,20 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exoplanet Size Comparison</title>
-
-  <style>
-    #main-container {width:50%;height:500px;margin:auto;}
-  </style>
+  <title>Exoplanet Visualizations</title>
+  <link rel="stylesheet" href="./static/css/style.css">
 </head>
 <body>
-  <h1>Exoplanet Size Comparison</h1>
-  <label for="planetDropdown">Select an Exoplanet:</label>
-  <select id="planetDropdown">
-    <option value="" selected disabled>Select a planet</option>
-  </select>
-  <div id="main-container"></div>
+  <header>
+    <h1>Exoplanet Data Visualizations</h1>
+  </header>
+
+  <section id="scatter3d-section">
+    <h2>3D Scatter Plot</h2>
+    <div id="scatter3d-container"></div>
+  </section>
+
+  <section id="scatter2d-section">
+    <h2>2D Scatter Plot</h2>
+    <div id="scatter2d-container"></div>
+  </section>
+
+  <section id="spacekit-section">
+    <h2>Exoplanet Size Comparison</h2>
+    <div id="controls">
+      <label for="planetDropdown">Select an Exoplanet:</label>
+      <select id="planetDropdown"></select>
+    </div>
+    <div id="main-container"></div>
+  </section>
+  
   <script src="https://typpo.github.io/spacekit/build/spacekit.js"></script>
-  <script src="./static/js/script.js"></script>
+  <script src="./static/js/spacekit.js"></script>
 </body>
 </html>

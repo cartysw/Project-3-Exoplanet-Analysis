@@ -13,22 +13,41 @@ viz.createObject('sun', Spacekit.SpaceObjectPresets.SUN);
 
 //viz.createObject('earth', Spacekit.SpaceObjectPresets.EARTH);
 
+const ephem = new Spacekit.Ephem({
+  epoch: 2458600.5,
+  a: 0.00001,
+  e: 0.19893,
+  i: 22.11137,
+  om: 294.42992,
+  w: 314.28890,
+  ma: 229.14238,
+}, 'deg');
+
+// Adjusts rotation speed based on radius
+function calculateRotationSpeed(radius) {
+  // Larger radius = slower rotation
+  const baseSpeed = 0.1;
+  const rotationSpeed = baseSpeed / radius;
+  return rotationSpeed;
+}
+
+let earthRadius = 1;
+let earthRotationSpeed = calculateRotationSpeed(earthRadius);
+
 // Create sphere for Earth object
-viz.createSphere('earth', {
+let earth = viz.createSphere('earth', {
+  ephem,
   position: [-5, 0, 0],
   textureUrl: './static/images/earth_texture.jpg',
-  radius: 2,
-  //debug: {
-    //showAxes: true,
-  //},
+  radius: earthRadius,
+  rotation: {
+    enable: true,
+    speed: earthRotationSpeed,
+  },
 });
 
-// Example exoplanets array
-// const exoplanets = [
-//   { name: 'Kepler-22b', size: '2.4', distance: '620', radius: 2.1, texture: './static/images/exoplanets/ceres.jpg' },
-//   { name: 'Kepler-452b', size: '1.6', distance: '1400', radius: 1.5, texture: './static/images/exoplanets/eris.jpg' },
-//   { name: 'HAT-p-67b', size: '1.2', distance: '4.2', radius: 22.6, texture: './static/images/exoplanets/haumea.jpg' },
-// ];
+// Reset slider to default
+document.getElementById('earthSlider').value = -5;
 
 let currentExoplanet = null;
 
@@ -53,9 +72,18 @@ fetch("http://127.0.0.1:5000/api/v1.0/exoplanets")
       //console.log(data);
       console.log(`data: ${data.length}`);
 
-      // Filter out planets with null radius
-      const validExoplanets = data.filter(p => p.planet_radius !== null);
-      console.log(`filtered data: ${validExoplanets.length}`)
+      const minReleaseYear = 2025;
+
+      // Filter out planets with null radius and release year past 2015
+      const validExoplanets = data.filter(p => {
+        if (p.release_date) {
+          const year = new Date(p.release_date).getFullYear();
+          return p.planet_radius !== null && year >= minReleaseYear;
+        }
+        return false;
+    });
+
+      console.log(`filtered data: (after ${minReleaseYear}): ${validExoplanets.length}`)
 
       // Create a dropdown with exoplanets dynamically
       const planetDropdown = document.getElementById('planetDropdown');
@@ -71,7 +99,7 @@ fetch("http://127.0.0.1:5000/api/v1.0/exoplanets")
 
       // Set default exoplanet in dropdown and update visualization
       if (validExoplanets.length > 0) {
-        const defaultPlanet = validExoplanets[2]; //validExoplanets.find(p => p.planet_id === 1);
+        const defaultPlanet = validExoplanets[0];
         planetDropdown.value = defaultPlanet.planet_id;
         updateExoplanet(defaultPlanet.planet_id, validExoplanets);
       }
@@ -97,10 +125,34 @@ function updateExoplanet(planetId, data) {
   // Select random texture for exoplanet
   const randomTexture = textures[Math.floor(Math.random() * textures.length)];
 
+  // Calculate rotation speed
+  let rotationSpeed = calculateRotationSpeed(planet.planet_radius);
+
   // Add new exoplanet
   currentExoplanet = viz.createSphere(planet.planet_name.toLowerCase(), {
+    ephem,
     position: [5, 0, 0],
+    rotation: {
+      enable: true,
+      speed: rotationSpeed,
+    },
     radius: planet.planet_radius,
     textureUrl: randomTexture,
   });
+
+  // Reset slider to default
+  document.getElementById('exoplanetSlider').value = 5;
 }
+
+// Add event listeners for sliders
+document.getElementById('earthSlider').addEventListener('input', function() {
+  const xPos = Number(this.value);
+  earth.setPosition(xPos, 0, 0);
+});
+
+document.getElementById('exoplanetSlider').addEventListener('input', function() {
+  if (currentExoplanet) {
+    const xPos = Number(this.value);
+    currentExoplanet.setPosition(xPos, 0, 0);
+  }
+});

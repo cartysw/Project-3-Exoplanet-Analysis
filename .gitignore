@@ -3,3 +3,6 @@ config.py
 
 # jupyter notebook checkpoints
 .ipynb_checkpoints/
+
+# pycache
+__pycache__/config.cpython-312.pyc

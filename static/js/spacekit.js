@@ -11,8 +11,6 @@ viz.createStars();
 // Create the sun using a preset space object.
 viz.createObject('sun', Spacekit.SpaceObjectPresets.SUN);
 
-//viz.createObject('earth', Spacekit.SpaceObjectPresets.EARTH);
-
 const ephem = new Spacekit.Ephem({
   epoch: 2458600.5,
   a: 0.00001,
@@ -31,39 +29,63 @@ function calculateRotationSpeed(radius) {
   return rotationSpeed;
 }
 
-let earthRadius = 1;
-let earthRotationSpeed = calculateRotationSpeed(earthRadius);
-
-// Create sphere for Earth object
-let earth = viz.createSphere('earth', {
-  ephem,
-  position: [-5, 0, 0],
-  textureUrl: './static/images/earth_texture.jpg',
-  radius: earthRadius,
-  rotation: {
-    enable: true,
-    speed: earthRotationSpeed,
-  },
-});
-
-// Reset slider to default
-document.getElementById('earthSlider').value = -5;
-
 let currentExoplanet = null;
+let currentPlanet = null;
 
 const textures = [
   "./static/images/exoplanets/ceres.jpg",
   "./static/images/exoplanets/eris.jpg",
   "./static/images/exoplanets/haumea.jpg",
-  "./static/images/exoplanets/mars.jpg",
   "./static/images/exoplanets/makemake.jpg",
-  "./static/images/exoplanets/mercury.jpg",
-  "./static/images/exoplanets/venus.jpg",
-  "./static/images/exoplanets/venus_atm.jpg",
-  "./static/images/exoplanets/saturn.jpg",
-  "./static/images/exoplanets/uranus.jpg",
-  "./static/images/exoplanets/neptune.jpg",
+  "./static/images/venus.jpg",
 ];
+
+const solarSystemPlanets = {
+  mercury: { texture: './static/images/mercury.jpg', radius: 0.38 },
+  venus: { texture: './static/images/venus_atm.jpg', radius: 0.95 },
+  earth: { texture: './static/images/earth_texture.jpg', radius: 1 },
+  mars: { texture: './static/images/mars.jpg', radius: 0.53 },
+  jupiter: { texture: './static/images/jupiter.jpg', radius: 11.2 },
+  saturn: { texture: './static/images/saturn.jpg', radius: 9.45 },
+  uranus: { texture: './static/images/uranus.jpg', radius: 4.0 },
+  neptune: { texture: './static/images/neptune.jpg', radius: 3.9 },
+}
+
+// Updates solar system planet visualization
+function updateSolarSystemPlanet(selectedPlanet) {
+  const planetData = solarSystemPlanets[selectedPlanet];
+  if (!planetData) return;
+
+  if (currentPlanet) {
+    viz.removeObject(currentPlanet);
+  }
+
+  let rotationSpeed = calculateRotationSpeed(planetData.radius);
+
+  currentPlanet = viz.createSphere(selectedPlanet, {
+    ephem,
+    position: [-5, 0, 0],
+    textureUrl: planetData.texture,
+    radius: planetData.radius,
+    rotation: {
+      enable: true,
+      speed: rotationSpeed,
+    },
+  });
+
+  // Reset slider to default
+  document.getElementById('earthSlider').value = -5;
+}
+
+// Make Earth selected by default
+const solarSystemDropdown = document.getElementById('solarSystemDropdown');
+solarSystemDropdown.value = 'earth';
+
+updateSolarSystemPlanet('earth');
+
+solarSystemDropdown.addEventListener('change', function() {
+  updateSolarSystemPlanet(this.value);
+});
 
 // Fetch exoplanet data from Flask API
 fetch("http://127.0.0.1:5000/api/v1.0/exoplanets")
@@ -146,8 +168,10 @@ function updateExoplanet(planetId, data) {
 
 // Add event listeners for sliders
 document.getElementById('earthSlider').addEventListener('input', function() {
-  const xPos = Number(this.value);
-  earth.setPosition(xPos, 0, 0);
+  if (currentPlanet) {
+    const xPos = Number(this.value);
+    currentPlanet.setPosition(xPos, 0, 0);
+  }
 });
 
 document.getElementById('exoplanetSlider').addEventListener('input', function() {

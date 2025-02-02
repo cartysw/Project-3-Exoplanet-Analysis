@@ -36,13 +36,13 @@ fetch("http://127.0.0.1:5000/api/v1.0/exoplanets")
       return {
         x: filteredData.map(p => p.orbital_period),
         y: filteredData.map(p => p.distance_from_earth),
-        z: filteredData.map(p => p.discovery_year),
+        z: filteredData.map(p => p.discovery_year), //replace with temperature?
         mode: 'markers',
         name: method,
         marker: {
           size: filteredData.map(p => planetMass(p.planet_mass)),
           color: discoveryMethodColors[method] || 'rgb(160, 160, 160)',
-          opacity: 0.8
+          opacity: 0.6
         },
         type: 'scatter3d',
         legendgroup: method,

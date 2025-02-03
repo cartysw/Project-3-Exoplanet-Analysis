@@ -26,21 +26,23 @@ fetch("http://127.0.0.1:5000/api/v1.0/exoplanets")
     const discoveries = topExoplanets.map(([, count]) => count);
 
     const trace = {
-        labels: exoplanets,
-        values: discoveries,
+        x: exoplanets,
+        y: discoveries,
         type: 'scatter',
         marker: {
             size: 40,
-            colors: [
-                'rgb(31, 119, 180)', 'rgb(255, 127, 14)', 'rgb(44, 160, 44)',
-                'rgb(214, 39, 40)', 'rgb(148, 103, 189)', 'rgb(140, 86, 75)',
-                'rgb(227, 119, 194)', 'rgb(127, 127, 127)','rgb(100, 100, 100)' // "Other" category
-              ]
+            //colors: [
+              //  'rgb(31, 119, 180)', 'rgb(255, 127, 14)', 'rgb(44, 160, 44)',
+               // 'rgb(214, 39, 40)', 'rgb(148, 103, 189)', 'rgb(140, 86, 75)',
+                //'rgb(227, 119, 194)', 'rgb(127, 127, 127)','rgb(100, 100, 100)' // "Other" category
+            //  ]
         }
     };
 
     const layout = {
         title: "Exoplanets Discovered Over Time",
+        xaxis: {range: [0, 5000], title: "Exoplanets"},
+        yaxis: {range: [1992, 2025], title: "Year of Discovery"},   
         margin: {l: 50, r: 50, b: 150, t: 50 },
         paper_bgcolor: 'rgb(50, 50, 50)',
         font: { color: 'white' }

@@ -3,39 +3,38 @@ fetch("http://127.0.0.1:5000/api/v1.0/exoplanets")
   .then(response => response.json())
   .then(data => {
 
-    const facilityCounts = {};
+    const exoplanetCounts = {};
 
     data.forEach(planet => {
-        const facility = planet.discovery_facility;
-        if (facility) {
-            facilityCounts[facility] = (facilityCounts[facility] || 0) + 1;
+        const exoplanet = planet.planet_name;
+        if (exoplanet) {
+            exoplanetCounts[exoplanet] = (exoplanetCounts[exoplanet] || 0) + 1;
         }
     });
 
-    const sortedFacilities = Object.entries(facilityCounts).sort((a, b) => b[1] - a[1]);
+    const sortedExoplanets = Object.entries(exoplanetCounts).sort((a, b) => b[1] - a[1]);
 
     const topN = 10;
-    const topFacilities = sortedFacilities.slice(0, topN);
-    const otherCount = sortedFacilities.slice(topN).reduce((sum, [, count]) => sum + count, 0);
+    const topExoplanets = sortedExoplanets.slice(0, topN);
+    const otherCount = sortedExoplanets.slice(topN).reduce((sum, [, count]) => sum + count, 0);
 
     if (otherCount > 0) {
-        topFacilities.push(["Other", otherCount]);
+        topExoplanets.push(["Other", otherCount]);
     }
 
-    const facilities = topFacilities.map(([facility]) => facility);
-    const discoveries = topFacilities.map(([, count]) => count);
+    const exoplanets = topExoplanets.map(([exoplanet]) => exoplanet);
+    const discoveries = topExoplanets.map(([, count]) => count);
 
     const trace = {
-        labels: facilities,
+        labels: exoplanets,
         values: discoveries,
         type: 'scatter',
-        hole: 0.3, // 0.3 makes donut chart
         marker: {
+            size: 40,
             colors: [
                 'rgb(31, 119, 180)', 'rgb(255, 127, 14)', 'rgb(44, 160, 44)',
                 'rgb(214, 39, 40)', 'rgb(148, 103, 189)', 'rgb(140, 86, 75)',
-                'rgb(227, 119, 194)', 'rgb(127, 127, 127)', 'rgb(188, 189, 34)',
-                'rgb(23, 190, 207)', 'rgb(100, 100, 100)' // "Other" category
+                'rgb(227, 119, 194)', 'rgb(127, 127, 127)','rgb(100, 100, 100)' // "Other" category
               ]
         }
     };

@@ -4,21 +4,21 @@
 
 ## Instructions to Run the Files
 ### 1.Pip installs
-	-Open a git bash terminal
-	-Activate the environment of your choice
-	-Use command `pip install flask-cors`
-  -Use command `pip install psycopg2`
+-Open a git bash terminal
+-Activate the environment of your choice
+-Use command `pip install flask-cors`
+-Use command `pip install psycopg2`
 ### 2.Clone the repo
-	-Copy the repository URL in github
-	-Open a git bash terminal and locate the folder you want your repository to go
-	-Use command `git clone ‘https://github.com/cartysw/Project-3-Exoplanet-Analysis.git’ `
+-Copy the repository URL in github
+-Open a git bash terminal and locate the folder you want your repository to go
+-Use command `git clone ‘https://github.com/cartysw/Project-3-Exoplanet-Analysis.git’ `
 
 ### 3. Create config.py file
-	-Open the cloned repository folder in VSC
-	-Create a new file called `config.py`
-	-In this file paste the following:
-	```Username = ‘postgres’
-	Password = ‘YOUR-POSTGRES-PASSWORD’```
+-Open the cloned repository folder in VSC
+-Create a new file called `config.py`
+-In this file paste the following:
+```Username = ‘postgres’ 
+Password = ‘YOUR-POSTGRES-PASSWORD’```
 
 ### 4. Set Up the Database and Tables
 

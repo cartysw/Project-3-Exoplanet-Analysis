@@ -1,6 +1,6 @@
 # Project-3-Exoplanet-Analysis
 ## File Structure
-``
+```
 Project-3-Exoplanet-Analysis
 │  .gitignore
 │  app.py
@@ -42,7 +42,7 @@ Project-3-Exoplanet-Analysis
           3D_scatter.js
           pie.js
           spacekit.js
-``
+```
 
 ## Instructions to Run the Files
 ### 1. Pip installs

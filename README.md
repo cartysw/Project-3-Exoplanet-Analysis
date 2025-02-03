@@ -60,8 +60,8 @@ Project-3-Exoplanet-Analysis
 - Create a new file called `config.py`
 - In this file paste the following:
 ```
-Username = ‘YOUR-USERNAME’
-Password = ‘YOUR-PASSWORD’
+username = ‘YOUR-USERNAME’
+password = ‘YOUR-PASSWORD’
 ```
 - Replace with your postgres username and password
 > **_NOTE:_**  The username for postgres is usually 'postgres'
@@ -76,6 +76,7 @@ Password = ‘YOUR-PASSWORD’
 
 - After executing the schema, import the CSV data into the database table created
 - You can import the data using the **Import/Export** feature in **PGAdmin**
+> **_NOTE:_** When the import box appears, go to the columns tab and uncheck the column `planet_id`
 
 **Run SELECT Statement**
 

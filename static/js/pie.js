@@ -41,9 +41,9 @@ fetch("http://127.0.0.1:5000/api/v1.0/exoplanets")
     };
 
     const layout = {
-        title: "Top Exoplanets Discovered by Facility",
-        margin: {l: 50, r: 50, b: 150, t: 50 },
-        paper_bgcolor: 'rgb(50, 50, 50)',
+        title: "Exoplanets Discovered by Facility",
+        margin: {l: 50, r: 50, b: 50, t: 50 },
+        paper_bgcolor: 'rgb(42, 42, 42)',
         font: { color: 'white' }
     };
 

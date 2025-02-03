@@ -1,6 +1,48 @@
 # Project-3-Exoplanet-Analysis
 ## File Structure
-
+``
+Project-3-Exoplanet-Analysis
+│  .gitignore
+│  app.py
+│  config.py
+│  Exoplanet Discovery Project Proposal.docx
+│  exoplanets.js
+│  index.html
+│  Project-3-Visualization-Concepts-Sketch.png
+│  README.md
+│
+├─Data
+│    exoplanetDataClean.csv
+│    exoplanets.json
+│    schema.sql
+│
+└─static
+  ├─css
+  │      style.css
+  │
+  ├─images
+  │  │  2k_sun.jpg
+  │  │  earth_texture.jpg
+  │  │  jupiter.jpg
+  │  │  mars.jpg
+  │  │  mercury.jpg
+  │  │  neptune.jpg
+  │  │  saturn.jpg
+  │  │  uranus.jpg
+  │  │  venus.jpg
+  │  │  venus_atm.jpg
+  │  │
+  │  └─exoplanets
+  │          ceres.jpg
+  │          eris.jpg
+  │          haumea.jpg
+  │          makemake.jpg
+  │
+  └─js
+          3D_scatter.js
+          pie.js
+          spacekit.js
+``
 
 ## Instructions to Run the Files
 ### 1. Pip installs
@@ -25,7 +67,6 @@ Password = ‘YOUR-PASSWORD’
 > **_NOTE:_**  The username for postgres is usually 'postgres'
 
 ### 4. Set up the Database and Tables
-
 **Open and Execute the Schema Script:**
 - Open PGAdmin and create a database called `exoplanet_db`
 - Open the `schema.sql` file in the new `exoplanet_db`
@@ -51,4 +92,16 @@ Password = ‘YOUR-PASSWORD’
 - Open the cloned repository folder in VSC
 - Right click on index.html and select 'Open with Liver Server'
 
-### Ethical Considerations 
+## Ethical Considerations
+
+## Sources
+### Dataset
+- https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=PS
+### Code
+- https://plotly.com/javascript/3d-scatter-plots/
+- https://github.com/typpo/spacekit?tab=readme-ov-file
+- https://typpo.github.io/spacekit/docs/index.html
+### Textures
+- https://www.solarsystemscope.com/textures/
+### Special Thanks
+- https://github.com/zachnguyen/Exoplanets-Visualization

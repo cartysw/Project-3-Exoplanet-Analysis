@@ -94,6 +94,7 @@ password = ‘YOUR-PASSWORD’
 - Right click on index.html and select 'Open with Liver Server'
 
 ## Ethical Considerations
+The ethical considerations surrounding the Exoplanet Archive data primarily revolve around issues of accessibility, data usage, and transparency. The archive, which provides valuable scientific data about exoplanets, is generally open to the public, allowing researchers and the general public to explore space discoveries. However, it’s crucial that the data is used responsibly, ensuring that findings are communicated accurately and transparently, avoiding misinterpretations that could lead to misinformation. Furthermore, while the data itself doesn’t typically contain personal information, ethical considerations about the environmental impact of space exploration and the effects of such discoveries on societal values and policies must also be acknowledged. Something to highlight is the 'controversial flag' column in this data. The presense of this information shows transparency about exoplanets that are currently being debated, but in doing so awknowledges that there is un-confirmed public information regarding exoplanets online. For our use of this data specifically, we decided not to use any exoplanets that were flagged as controversial and focused only on those that were not debated.
 
 ## Sources
 ### Dataset

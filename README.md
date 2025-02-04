@@ -3,7 +3,7 @@
 ## Project Overview
 Hello and welcome to our repository for Project 3: Exoplanet Data Analysis! The subject focus centers on a dataset gathered by NASA that documents many different kinds information about exoplanets. Examples of information found within include things like various size measurements of the exoplanet, the method used to discover it, the facility that discovered it, etc. We opted to focus on the data visualization route for this project, and settled on 4:
 ### 1. 3D Scatter Plot
-  - For our first visualization we wanted to visualize the distribution of exoplanet discovery methods compared to metrics such as the year of discovery, distance from earth, and how long it takes to revolve around it's local star. To do this, we went with a 3D scatter plot. Each point represents an exoplanet that was discovered, is color-coded for each unique discovery method, and can be hovered over for more info.
+  - For our first visualization we wanted to visualize the distribution of exoplanet discovery methods compared to metrics such as the year of discovery, distance from earth, and how long it takes to revolve around it's local star. To do this, we went with a 3D scatter plot. Each point represents an exoplanet that was discovered, is color-coded for each unique discovery method, and can be hovered over for more info. You can also click a specific discovery method to filter the data points in the visualization.
 ### 2. 
 ### 3. Pie Chart
   - For our 3rd visualization we thought it would be interesting to show the most active exoplanet discovery facilities, so we created a pie chart to present that. You can see the names tied to their respective color, and hover over each slice in the chart to view additional info.

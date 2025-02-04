@@ -8,7 +8,7 @@ Hello and welcome to our repository for Project 3: Exoplanet Data Analysis! The 
 ### 3. Pie Chart
   - For our 3rd visualization we thought it would be interesting to show the most active exoplanet discovery facilities, so we created a pie chart to present that. You can see the names tied to their respective color, and hover over each slice in the chart to view additional info.
 ### 4. Space Kit Visualization
-  - To incorporate a Javascript library we had never tried before, we opted for Spacekit! Spacekit is a cool library that lets you create 3D space visualizations. We used Spacekit to create a visualization that compares the size of planets in our solar systems with various different exoplanets found within the dataset. You will find dropdowns for Sol system planets and various different exoplanets that you can freely swap between at your discretion. There are also sliders that allow you to reposition your chosen planets.
+  - To incorporate a Javascript library we had never tried before, we opted for Spacekit! Spacekit is a cool library that lets you create 3D space visualizations. We used Spacekit to create a visualization that compares the size of planets in our solar systems with various different exoplanets found within the dataset. You will find dropdowns for Sol system planets and various different exoplanets that you can freely swap between at your discretion. There are also sliders that allow you to reposition your chosen planets. To note: the visuals used for the exoplanets are randomly chosen planet maps. We do not always directly know what they look like.
 
 ## File Structure
 ```
